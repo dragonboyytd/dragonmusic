@@ -74,7 +74,8 @@ client.on('message', async msg => { // eslint disable line
             ]
           }
         });
-		const permissions = voiceChannel.permissionsFor(msg.client.user);
+		
+	    const permissions = voiceChannel.permissionsFor(msg.client.user);
 		if (!permissions.has('CONNECT')) {
             return msg.channel.send({embed: {
                 color: 15158332,
@@ -98,14 +99,16 @@ client.on('message', async msg => { // eslint disable line
             });
         }
         
-        if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
+       
+	    if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
             const playlist = await youtube.getPlaylist(url);
             const videos = await playlist.getVideos();
             for (const video of Object.values(videos)) {
                 const video2 = await youtube.getVideoByID(video.id); // eslint-disable-line no-await-in-loop
                 await handleVideo(video2, msg, voiceChannel, true) // eslint-disable-line no-await-in-loop
             }
-            return msg.channel.send({embed: {
+           
+		    return msg.channel.send({embed: {
                 color: 15158332,
                 fields: [{
                     name: "✅ Added playlist",
@@ -116,7 +119,8 @@ client.on('message', async msg => { // eslint disable line
             });
         } else {
             try {
-                var video = await youtube.getVideo(url);
+           
+		    var video = await youtube.getVideo(url);
             } catch (error) {
                 try {
                     var videos = await youtube.searchVideos(searchString, 10);
