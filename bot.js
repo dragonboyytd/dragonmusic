@@ -413,5 +413,30 @@ let args = message.content.split(' ').slice(1).join(' ');
 
 
 
+client.on('message', message => {
+ if(message.content.startsWith(prefix + "join")) {
+message.member.voiceChannel.join();
+}
+});
+
+==============================
+client.on('message', msg => {
+
+    if (msg.content == '1join') {
+        if (msg.member.voiceChannel) {
+
+     if (msg.member.voiceChannel.joinable) {
+         msg.member.voiceChannel.join().then(msg.react('✅'));
+     }
+    }
+}
+})
+client.on('ready', () => {
+    client.channels.get("471776567442407426").join();
+    });
+
+
+
+
 client.login(process.env.BOT_TOKEN);
 
