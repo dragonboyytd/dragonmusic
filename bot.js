@@ -75,7 +75,7 @@ client.on('message', async msg =>{
 	let command = msg.content.toLowerCase().split(" ")[0];
 	command = command.slice(prefix.length)
 
-    if(command === `ping`) {
+    if(command === `mping`) {
     let embed = new Discord.RichEmbed()
     .setColor(3447003)
     .setTitle("Pong!!")
@@ -141,7 +141,7 @@ client.on('message', async msg => {
 	let command = msg.content.toLowerCase().split(" ")[0];
 	command = command.slice(prefix.length)
 
-	if (command === `play`) {
+	if (command === `p`) {
 		const voiceChannel = msg.member.voiceChannel;
         
         if (!voiceChannel) return msg.channel.send("I can't find you in any voice channel!");
@@ -221,7 +221,7 @@ client.on('message', async msg => {
             
         }
         
-	} else if (command === `skip`) {
+	} else if (command === `s`) {
 
 		if (!msg.member.voiceChannel) return msg.channel.send("You Must be in a Voice channel to Run the Music commands!");
         if (!serverQueue) return msg.channel.send("There is no Queue to skip!!");
@@ -355,7 +355,7 @@ function play(guild, song) {
 
 
 client.on('message', message => {
-    if (message.content === 'help') {
+    if (message.content === 'mhelp') {
         let helpEmbed = new Discord.RichEmbed()
         .setTitle('**أوامر الميوزك...**')
         .setDescription('**برفكس البوت (!)**')
@@ -373,7 +373,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if (message.content === 'general_commands') {
+    if (message.content === 'mgeneral_commands') {
         let helpEmbed = new Discord.RichEmbed()
         .setTitle('**أوامر عامة...**')
         .addField('avatar', "افاتار الشخص المطلوب")
@@ -412,9 +412,9 @@ let args = message.content.split(' ').slice(1).join(' ');
 });
 
 
-
+const prefix = "/";
 client.on('message', message => {
- if(message.content.startsWith(prefix + "join")) {
+ if(message.content.startsWith(prefix + "j")) {
 message.member.voiceChannel.join();
 }
 });
